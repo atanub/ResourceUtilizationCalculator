@@ -1,5 +1,5 @@
-# TeamUtilizationCalculator
-Calculates team members' utilization based on their allocations across multiple projects with varying durations and timeframes.
+# ResourceUtilizationCalculator
+Calculates Resource utilization based on allocations across multiple projects with varying durations and timeframes.
 
 # Check Sample Data files
 * [Sample Input](./Sample%20Data/Sample%20Input%20-%20Utilization%20Calculator.tsv)
