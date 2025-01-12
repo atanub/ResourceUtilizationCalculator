@@ -5,20 +5,19 @@ import json
 import pandas as pd
 from dateutil.relativedelta import relativedelta
 
-# Calculates team members' utilization based on their allocations across multiple projects with varying durations and timeframes.
-
 
 class UtilizationCalculator():
+    """
+    A utility class for calculating utilization based on input data.
+    input data consists of allocations across multiple projects with varying durations and timeframes.
+    Methods
+    -------
+    calculate(inputFilePath, outputFilePath, countOfPastMonths, countOfFutureMonths, autoDetectTenure=False)
+        Main method to calculate utilization and save the result to a file.
+    """
 
     @staticmethod
     def calculate(inputFilePath, outputFilePath, countOfPastMonths, countOfFutureMonths, autoDetectTenure=False):
-        # inputFilePath = './data.tsv'
-        # outputFilePath = './output.json'
-        # countOfPastMonths = 2
-        # countOfFutureMonths = 4
-        autoDetectTenure = False
-        # autoDetectTenure = True
-
         df = UtilizationCalculator._readInputFile(inputFilePath)
         if autoDetectTenure is True:
             maxDate = df.EndDate.max()
@@ -79,8 +78,8 @@ class UtilizationCalculator():
             uu += u
             count += 1
             d += datetime.timedelta(days=1)
-            uu = uu / count
 
+        uu = uu / count
         return uu
 
     @staticmethod
@@ -154,10 +153,8 @@ if __name__ == "__main__":
     logging.getLogger().setLevel(logLevel)
 
     try:
-        inputFilePath = './data.tsv'
-        outputFilePath = './output.json'
-        inputFilePath = 'C:/Work/Projects/Source/SFSTimesheetETL/output/Utilization Calculator TestData.tsv'
-        outputFilePath = 'C:/Work/Projects/Source/SFSTimesheetETL/output/Utilization Calculator Output.json'
+        inputFilePath = 'output/Sample Input - Utilization Calculator.tsv'
+        outputFilePath = 'output/Utilization Calculator Output.json'
         countOfPastMonths = 4
         countOfFutureMonths = 4
         UtilizationCalculator.calculate(
